@@ -2,7 +2,7 @@
 
 From [campisano.org/Gcp (Cloud)](http://www.campisano.org/wiki/en/Gcp_(Cloud)#Setup_a_new_f1-micro_machine_using_Terraform)
 
-This project shows how to use a minimalistic Terraform module (configurable with a custom vars.json file) to create a [free-tier infrastructure](https://cloud.google.com/free/docs/gcp-free-tier) with 2 free Virtual Machines (or a more complex one) in the Google GCP cloud.
+This project shows how to use a minimalistic Terraform module (configurable with a custom vars.json file) to create a [free-tier infrastructure](https://cloud.google.com/free/docs/gcp-free-tier) with a free Virtual Private Server (VPS) in the Google Cloud Platform (GCP).
 
 
 
@@ -33,11 +33,11 @@ Minimum System Requirements
 
 * A GCP [account](https://cloud.google.com/), a [free account](https://cloud.google.com/free) can be used.
 
-* Ensure to have enabled the Compute Engine API to allow the creation of Virtual Machines via API (Terraform will use that).
+* Ensure to have enabled the Compute Engine API to allow the creation of VPSs via API (Terraform will use that).
 
 * A new cloud project inside the GCP console to easy map the resources that we will create.
 
-* A new JSON Key for the new project in the Service Account section. This will be used by Terraform to create and manage resources e.g. the Virtual Machine creation. Follow those steps:
+* A new JSON Key for the new project in the Service Account section. This will be used by Terraform to create and manage resources e.g. the VPS creation. Follow those steps:
 
 ```
 go to the Service Account section
@@ -47,20 +47,20 @@ select the new Service Account, go to Key section and create a new JSON key
 save the key in a local folder e.g. ~/.gcp/my-project-key.json
 ```
 
-* An SSH Key Pair to have access to the Virtual Machines. To create a new keypair, do the following:
+* An SSH Key Pair to have access to the VPS. To create a new keypair, do the following:
 
 ```
 ssh-keygen -q -t rsa -b 2048 -N '' -f ~/.ssh/gcp-keypair
 chmod 400 ~/.ssh/gcp-keypair
 ```
 
-* And remember, the free tier has strict limits, the first that you must manage is to use a free tier compatible region as place to create your Virtual Machines. In this example we will use us-east1.
+* And remember, the free tier has strict limits, the first that you must manage is to use a free tier compatible region as place to create your VPSs. In this example we will use us-east1.
 
 * The Terraform command. To install, see [the official doc](https://www.terraform.io/downloads.html).
 
 * Install [Make](https://www.gnu.org/software/make/). This tool is used to run predefined Terraform commands.
 
-* Choose a O.S. image to use in your Virtual Machines. A list is available [here](https://console.cloud.google.com/compute/images). In this example we will use debian-cloud/debian-10.
+* Choose a O.S. image to use in your VPSs. A list is available [here](https://console.cloud.google.com/compute/images). In this example we will use debian-cloud/debian-10.
 
 
 
@@ -98,14 +98,14 @@ Example
 
 * Login
 
-You can login in your Virtual Machine with the command `ssh -i ~/.ssh/gcp-keypair root@111.22.33.44`. Remember to replace `111.22.33.44` with the static ip of your new machine. It is shown in the output of the `make apply` command.
+You can login in your VPS with the command `ssh -i ~/.ssh/gcp-keypair root@111.22.33.44`. Remember to replace `111.22.33.44` with the static ip of your new machine. It is shown in the output of the `make apply` command.
 
 
 
 Customize
 ---------
 
-This project can create several Virtual Machines. Each machine is configured with a static ip, and an initial script can be defined to customize the machine O.S. so that software can be added or removed programmatically. This is configurable modifying the variables defined in the `vars.json` file.
+This project can create several VPSs. Each machine is configured with a static ip, and an initial script can be defined to customize the machine O.S. so that software can be added or removed programmatically. This is configurable modifying the variables defined in the `vars.json` file.
 
 The following snippet is a sample of a `vars.json` to:
 * configure the google provider;
