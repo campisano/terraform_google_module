@@ -1,0 +1,17 @@
+{
+    "google_provider": {
+        "region": "us-east1",
+        "project": "my-project-id",
+        "credentials_file": "~/.gcp/my-project-key.json"
+    },
+    "google_module": {
+        "my-instance-name-1": {
+            "zone": "us-east1-c",
+            "keypair_path": "~/.ssh/gcp-keypair.pub",
+            "machine_type": "f1-micro",
+            "image_name": "debian-cloud/debian-10",
+            "boot_disk_size": "10",
+            "init_script_path": "init_script.sh"
+        }
+    }
+}
