@@ -54,13 +54,13 @@ ssh-keygen -q -t rsa -b 2048 -N '' -f ~/.ssh/gcp-keypair
 chmod 400 ~/.ssh/gcp-keypair
 ```
 
-* And remember, the free tier has strict limits, the first that you must manage is to use a free tier compatible region as place to create your VPSs. In this example we will use us-east1.
+* And remember, the free tier has strict limits, the first that you must manage is to use a free tier compatible region as place to create your VPSs. In this example we will use `us-east1`.
 
 * The Terraform command. To install, see [the official doc](https://www.terraform.io/downloads.html).
 
 * Install [Make](https://www.gnu.org/software/make/). This tool is used to run predefined Terraform commands.
 
-* Choose a O.S. image to use in your VPSs. A list is available [here](https://console.cloud.google.com/compute/images). In this example we will use debian-cloud/debian-10.
+* Choose a O.S. image to use in your VPSs. A list is available [here](https://console.cloud.google.com/compute/images). In this example we will use `debian-cloud/debian-10`.
 
 
 
